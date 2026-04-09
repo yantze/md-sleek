@@ -1,0 +1,49 @@
+{
+  "name": "md-serve",
+  "version": "1.0.0",
+  "description": "Serve markdown files as beautiful HTML pages with live reload and Mermaid diagram support",
+  "type": "module",
+  "bin": {
+    "md-serve": "./dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "beautiful-mermaid": "^1.1.3",
+    "chokidar": "^4.0.0",
+    "highlight.js": "^11.11.0",
+    "marked": "^15.0.0",
+    "marked-highlight": "^2.2.0",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/ws": "^8.5.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.5.0"
+  },
+  "keywords": [
+    "markdown",
+    "server",
+    "mermaid",
+    "live-reload",
+    "documentation",
+    "beautiful-mermaid"
+  ],
+  "license": "MIT"
+}
