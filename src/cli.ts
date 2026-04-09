@@ -5,10 +5,10 @@ const args = process.argv.slice(2);
 
 if (args.includes('-h') || args.includes('--help')) {
   console.log(`
-  md-serve - Serve markdown files as beautiful HTML pages
+  md-sleek - Serve markdown files as beautiful HTML pages
 
   Usage:
-    md-serve [directory] [options]
+    md-sleek [directory] [options]
 
   Arguments:
     directory          Path to markdown directory (default: ".")
@@ -24,7 +24,7 @@ if (args.includes('-h') || args.includes('--help')) {
 }
 
 if (args.includes('-v') || args.includes('--version')) {
-  console.log('md-serve 1.0.0');
+  console.log('md-sleek 1.0.0');
   process.exit(0);
 }
 

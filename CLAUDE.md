@@ -2,12 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## md-serve Package
+## md-sleek Package
 
 ### Build & Run
 
 ```bash
-cd md-serve
+cd md-sleek
 npm run build          # tsup → dist/cli.js + dist/index.js + dist/index.d.ts
 npm run dev            # tsup --watch (rebuild on source changes)
 node dist/cli.js ..    # Serve parent docs directory on port 3000

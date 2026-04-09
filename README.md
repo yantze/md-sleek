@@ -1,4 +1,4 @@
-# md-serve
+# md-sleek
 
 Serve markdown files as beautiful HTML pages with live reload and Mermaid diagram support.
 
@@ -16,29 +16,29 @@ Zero config. Just point it at a directory.
 ## Install
 
 ```bash
-npm install -g md-serve
+npm install -g md-sleek
 ```
 
 ## Usage
 
 ```bash
 # Serve current directory
-md-serve
+md-sleek
 
 # Serve a specific directory
-md-serve ./docs
+md-sleek ./docs
 
 # Custom port
-md-serve -p 8080
+md-sleek -p 8080
 
 # Open browser on start
-md-serve -o
+md-sleek -o
 
 # Disable live reload
-md-serve --no-reload
+md-sleek --no-reload
 
 # Combine options
-md-serve ./docs -p 4000 -o
+md-sleek ./docs -p 4000 -o
 ```
 
 Open `http://localhost:3000` to see the directory listing, click any `.md` file to view it.
@@ -46,7 +46,7 @@ Open `http://localhost:3000` to see the directory listing, click any `.md` file 
 ## Programmatic API
 
 ```ts
-import { startServer, renderMarkdown } from 'md-serve';
+import { startServer, renderMarkdown } from 'md-sleek';
 
 // Start a server
 const server = startServer({

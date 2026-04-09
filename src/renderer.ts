@@ -11,7 +11,7 @@ async function loadMermaid() {
     const mod = await import('beautiful-mermaid');
     renderMermaidSVG = mod.renderMermaidSVG;
   } catch {
-    console.warn('[md-serve] beautiful-mermaid not available, mermaid diagrams will show as code blocks');
+    console.warn('[md-sleek] beautiful-mermaid not available, mermaid diagrams will show as code blocks');
   }
 }
 

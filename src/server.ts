@@ -21,7 +21,7 @@ export function startServer(config: ServerConfig): http.Server {
   const baseDir = path.resolve(config.dir);
 
   if (!fs.existsSync(baseDir) || !fs.statSync(baseDir).isDirectory()) {
-    console.error(`[md-serve] Directory not found: ${baseDir}`);
+    console.error(`[md-sleek] Directory not found: ${baseDir}`);
     process.exit(1);
   }
 
@@ -60,7 +60,7 @@ export function startServer(config: ServerConfig): http.Server {
       // 404 for everything else
       send(res, 404, '<h1>404</h1><p>Not found</p>');
     } catch (err) {
-      console.error('[md-serve] Request error:', err);
+      console.error('[md-sleek] Request error:', err);
       send(res, 500, `<h1>500</h1><p>Internal server error</p>`);
     }
   });
@@ -75,7 +75,7 @@ export function startServer(config: ServerConfig): http.Server {
   }
 
   server.listen(config.port, () => {
-    console.log(`\n  md-serve running at:\n`);
+    console.log(`\n  md-sleek running at:\n`);
     console.log(`  → http://localhost:${config.port}\n`);
     console.log(`  Serving: ${baseDir}`);
     console.log(`  Live reload: ${config.reload ? 'enabled' : 'disabled'}\n`);
