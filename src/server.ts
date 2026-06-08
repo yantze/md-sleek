@@ -12,9 +12,27 @@ export interface ServerConfig {
   reload: boolean;
 }
 
+const IMAGE_MIME: Record<string, string> = {
+  '.png': 'image/png',
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.gif': 'image/gif',
+  '.svg': 'image/svg+xml',
+  '.webp': 'image/webp',
+  '.avif': 'image/avif',
+  '.ico': 'image/x-icon',
+  '.bmp': 'image/bmp',
+};
+
 function send(res: http.ServerResponse, status: number, body: string, contentType = 'text/html; charset=utf-8') {
   res.writeHead(status, { 'Content-Type': contentType });
   res.end(body);
+}
+
+function sendFile(res: http.ServerResponse, filePath: string, contentType: string) {
+  const buf = fs.readFileSync(filePath);
+  res.writeHead(200, { 'Content-Type': contentType });
+  res.end(buf);
 }
 
 export function startServer(config: ServerConfig): http.Server {
@@ -55,6 +73,23 @@ export function startServer(config: ServerConfig): http.Server {
         const title = path.basename(filePath, '.md');
         const html = await renderMarkdown(source, { title, liveReload: config.reload });
         return send(res, 200, html);
+      }
+
+      // Image files
+      const ext = path.extname(pathname).toLowerCase();
+      if (ext in IMAGE_MIME) {
+        const filePath = path.join(baseDir, pathname);
+
+        // Path traversal protection
+        if (!filePath.startsWith(baseDir)) {
+          return send(res, 403, 'Forbidden');
+        }
+
+        if (!fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) {
+          return send(res, 404, `<h1>404</h1><p>File not found: ${pathname}</p>`);
+        }
+
+        return sendFile(res, filePath, IMAGE_MIME[ext]);
       }
 
       // 404 for everything else

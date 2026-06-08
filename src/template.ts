@@ -113,7 +113,7 @@ pre {
   border-radius: 8px;
   padding: 1rem;
   overflow-x: auto;
-  line-height: 1.5;
+  line-height: 1.1;
   margin: 0 0 1rem;
 }
 pre code {
